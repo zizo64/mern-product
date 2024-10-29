@@ -2,10 +2,14 @@ import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose";
 import Product from "./models/product.model.js";
+import cors from 'cors';
+import path from "path"
 dotenv.config()
 
 const app=express();
+const __dirname=path.resolve()
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect(process.env.MONGO).then(()=>{console.log("connected to database")}).catch(err=>console.log(err))
 
