@@ -3,27 +3,31 @@ import dotenv from "dotenv"
 import mongoose from "mongoose";
 import Product from "./models/product.model.js";
 import cors from 'cors';
-import path from "path"
+import path from "path";
+import { fileURLToPath } from "url";
 dotenv.config()
 
+const __filename=fileURLToPath(import.meta.url)
+const __dirname=path.dirname(__filename)
 const app=express();
-const __dirname=path.resolve()
 app.use(express.json());
 app.use(cors());
 
+
 mongoose.connect(process.env.MONGO).then(()=>{console.log("connected to database")}).catch(err=>console.log(err))
 
-app.get("/",(req,res)=>{res.send("app is ready to use")})
 
-app.get("/products", async (req,res)=>{
-    
-    try{
+app.get("/products", async (req,res)=>{ 
+try{
 const product=await Product.find({})
   return res.status(200).json(product)
     } catch(error){
         return res.status(500).json(error)
     }
 })
+
+app.use(express.static(path.join(__dirname,'/frontend/dist')))
+app.get('*',(req,res)=>res.sendFile(path.join(__dirname,'/frontend/dist/index.html')))
 
 app.post("/products", async (req,res)=>{
     const product=req.body
