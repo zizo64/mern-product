@@ -1,11 +1,14 @@
 {
   "name": "mern-product",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "backend/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": " npm install --prefix ./backend/frontend && npm run build --prefix ./backend/frontend && node ./backend/index.js",
-    "build": " npm install --prefix ./backend/frontend && npm run build --prefix ./backend/frontend && npm install"
+    "install-frontend": "npm install --prefix ./backend/frontend",
+    "build-frontend": "npm run build --prefix ./backend/frontend",
+    "dev": "npm run install-frontend && npm run build-frontend && nodemon ./backend/index.js",
+    "start": "node ./backend/index.js",
+    "build": "npm run install-frontend && npm run build-frontend && npm install"
   },
   "type": "module",
   "keywords": [],
