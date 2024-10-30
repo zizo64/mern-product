@@ -5,8 +5,8 @@ import Product from "./models/product.model.js";
 import cors from 'cors';
 import path from "path";
 import { fileURLToPath } from "url";
-dotenv.config()
-
+dotenv.config({ path: './backend/.env' })
+console.log("MONGO URI:", process.env.MONGO)
 const __filename=fileURLToPath(import.meta.url)
 const __dirname=path.dirname(__filename)
 const app=express();
