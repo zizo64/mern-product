@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import Product from "./models/product.model.js";
 import cors from 'cors';
 import path from "path";
-import './backend/index.js';
 import { fileURLToPath } from "url";
 dotenv.config({ path: './backend/.env' })
 console.log("MONGO URI:", process.env.MONGO)
