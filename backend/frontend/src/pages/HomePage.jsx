@@ -73,7 +73,7 @@ const HomePage = () => {
 
         <SimpleGrid columns={{base:1, md:2, lg:3}} spacing={10}>
           {products && products.map((item)=><Box key={item._id} bg={"gray.200"} rounded={"lg"} m={3} > 
-          <Image src={item.image} alt={item.name} h={40} w={"full"} p={3} objectFit={"cover"}></Image>
+          <Image src={item.image} alt={item.name} h={80} w={"full"} p={3} objectFit={"cover"}></Image>
           <Box p={4}>
           <Flex justifyContent={"space-between"} my={3}> 
             <Heading>{item.name}</Heading>
